@@ -40,7 +40,7 @@ class LumenPassport
      * @param int $clientId
      * @return \DateInterval|static
      */
-    public static function tokensExpireIn(DateTimeInterface $date = null, $clientId = null)
+    public static function tokensExpireIn(?DateTimeInterface $date = null, $clientId = null)
     {
         if (! $clientId) return Passport::tokensExpireIn($date);
 
@@ -64,7 +64,7 @@ class LumenPassport
      */
     public static function routes($callback = null, array $options = [])
     {
-        if ($callback instanceof Application && preg_match('/(5\.[5-8]\..*)|([6789]\..*)|(10\..*)/', $callback->version())) $callback = $callback->router;
+        if ($callback instanceof Application && preg_match('/(5\.[5-8]\..*)|([6789]\..*)|(1[0-9]\..*)/', $callback->version())) $callback = $callback->router;
 
         $callback = $callback ?: function ($router) {
             $router->all();
